@@ -32,8 +32,10 @@ SELECT * FROM rooms WHERE price IS NOT NULL ORDER BY price ASC limit 1;
 UPDATE rooms SET vacant = 'false' WHERE room_num = 202; 
 --This does it for sure but doesnt incorporate join.
 
- UPDATE rooms SET vacant = 'false' FROM hotels JOIN rooms ON rooms.hotel_id = hotels.id WHERE room_num = 202;
+ UPDATE rooms SET vacant = 'false' FROM rooms JOIN hotels ON rooms.hotel_id = hotels.id WHERE rooms.room_num = 202;
 -- ERROR:  table name "rooms" specified more than once
+
+
 
 --Update all the rooms with the hotel_id of 7 to now have a hotel_id that matches the Grand Budapest Hotel
 
@@ -41,10 +43,3 @@ UPDATE rooms SET hotel_id = 6 WHERE hotel_id = 7;
 -- hard coded . trying to figure out syntax for join inside update clause
 
 
-
-
---bonus SQL Part 2b
---Show which hotels are associated with these rooms as well and update the three fields name to be guest_name, hotel_name and room_name.
-
-
---
